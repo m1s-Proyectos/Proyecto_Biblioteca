@@ -1,0 +1,56 @@
+# --- Compilación / salida Ant-NetBeans ---
+/build/
+/dist/
+/nbbuild/
+/nbdist/
+
+# Salida fuera de las carpetas estándar (por si se usa otro destino)
+out/
+
+# --- Clases y empaquetados sueltos ---
+*.class
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# JAR de dependencias: en este proyecto suelen ir en librerias/ y conviene
+# subirlas para que NetBeans compile sin Maven. Si prefieres no versionarlas,
+# descomenta la siguiente línea y documenta en read.txt cómo descargarlas.
+# /librerias/*.jar
+
+# --- NetBeans: ajustes locales por máquina (JDK, rutas de usuario) ---
+/nbproject/private/
+
+# --- Otros IDEs ---
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.code-workspace
+
+# --- Entornos / secretos (nunca subir) ---
+.env
+.env.*
+*.local
+*.pem
+
+# --- Logs y temporales ---
+*.log
+*.tmp
+*.temp
+*~
+*.bak
+*.swp
+*.swo
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Maven / Gradle (por si alguien genera basura en la raíz) ---
+target/
+.gradle/
