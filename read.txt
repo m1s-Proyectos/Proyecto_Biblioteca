@@ -1,5 +1,5 @@
 ================================================================================
-  Biblioteca_Reportes — Guía rápida para desarrolladores
+  Biblioteca_Reportes — Guía rápida para poder ejecutar el proyecto
 ================================================================================
 
 REPOSITORIO (GitHub)
@@ -20,7 +20,7 @@ REPOSITORIO (GitHub)
   Aplicación de escritorio en Java Swing con JDBC y patrón DAO que muestra
   reportes (tablas) leyendo datos desde vistas MySQL.
 
-  • Tipo de proyecto: Java estándar con Ant (NO Maven ni Gradle).
+  • Tipo de proyecto: Java estándar con Ant.
   • IDE recomendado: Apache NetBeans (proyecto Java SE + Ant).
   • JDK: 17 (configurado en nbproject/project.properties: javac.source/target).
 
@@ -29,7 +29,7 @@ REPOSITORIO (GitHub)
 ================================================================================
   1) JDK 17 (o compatible con la versión indicada en project.properties).
   2) Apache NetBeans (versión reciente con soporte Java SE + Ant).
-  3) MySQL Server con una base de datos llamada "biblioteca" (o ajustar URL).
+  3) MySQL Server con una base de datos llamada "biblioteca" debes poner la que tu haz creado.
   4) Las siguientes VISTAS deben existir en MySQL (esquema biblioteca):
 
         - vista_prestamos_activos
@@ -48,13 +48,8 @@ REPOSITORIO (GitHub)
 
   Debes configurar ahí:
     - URL (host, puerto, nombre de la base de datos)
-    - USER
-    - PASSWORD
-
-  Cada integrante suele tener usuario/clave distintos en su MySQL local:
-  ajusta estos valores en tu máquina sin subir contraseñas reales al repositorio
-  si el repo es público (considera variables de entorno o archivo local
-  ignorado por Git en mejoras futuras).
+    - USER "tu user"
+    - PASSWORD"tu password en mysql"
 
 ================================================================================
   CÓMO ABRIR Y EJECUTAR EN NETBEANS
@@ -87,29 +82,16 @@ REPOSITORIO (GitHub)
   nbproject/        Metadatos y build Ant para NetBeans
   build.xml         Script Ant raíz
 
-================================================================================
-  COMPILACIÓN (sin NetBeans, opcional)
-================================================================================
-  Desde la raíz del proyecto, con javac y las JAR en librerias/, por ejemplo:
-
-    mkdir build\classes  (si no existe)
-    javac --release 17 -encoding UTF-8 -d build\classes ^
-      -cp "librerias\mysql-connector-j.jar;librerias\jasperreports.jar" ^
-      (todos los .java bajo src\)
-
-  En Windows el separador de classpath es ";". En Linux/macOS sería ":".
 
 ================================================================================
-  NOTAS PARA QUIEN VA A MODIFICAR EL CÓDIGO
+  NOTAS PARA CUANDO INTENTES MODIFICAR EL CÓDIGO
 ================================================================================
   • Mantener el patrón DAO: vistas/consultas en dao/, modelos en modelos/.
   • Las tablas en Swing usan DefaultTableModel; estilos en TableStyle.
-  • NO convertir el proyecto a Maven/Gradle salvo acuerdo del equipo.
+  • NO convertir el proyecto a Maven/Gradle salvo acuerdo de nosotros 2.
   • Tras clonar: si NetBeans marca error en project.xml, usar la versión del
     repo (no reintroducir etiquetas no válidas dentro de <data> de j2se-project).
-  • ExportarPDF está preparada para JasperReports; completar integración cuando
-    los .jasper y dependencias estén definidos.
-
+ 
 ================================================================================
   PROBLEMAS FRECUENTES
 ================================================================================
@@ -125,10 +107,4 @@ REPOSITORIO (GitHub)
 ================================================================================
   CONTACTO / COORDINACIÓN
 ================================================================================
-  Acordar con el equipo ramas (main/develop), convención de commits y si se
-  suben o no credenciales locales. Este read.txt es orientativo; amplíen lo
-  que necesiten en el mismo archivo o en documentación del equipo.
-
-================================================================================
-  Fin del documento
-================================================================================
+Te creare una rama con tu nombre que sera  donde iras guardando tus cambios que hagas del proyecto.
