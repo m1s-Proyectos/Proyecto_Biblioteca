@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Implementación Ant mínima compatible con la estructura de proyectos Java SE de NetBeans.
+    Permite compilar, empaquetar JAR y ejecutar la aplicación con dependencias en /librerias.
+-->
+<project name="Biblioteca_Reportes-impl" basedir=".." default="default">
+    <target name="default" depends="jar" description="Compila y empaqueta el proyecto."/>
+
+    <target name="-init">
+        <property file="nbproject/project.properties"/>
+        <property name="build.dir" value="build"/>
+        <property name="build.classes.dir" value="${build.dir}/classes"/>
+        <property name="dist.dir" value="dist"/>
+        <mkdir dir="${build.classes.dir}"/>
+    </target>
+
+    <target name="-pre-compile"/>
+    <target name="-post-compile"/>
+
+    <target name="compile" depends="-pre-compile, -init, -do-compile, -post-compile" description="Compila código fuente."/>
+
+    <target name="-do-compile">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="true"
+               deprecation="true" encoding="${source.encoding}" includeantruntime="false"
+               source="${javac.source}" target="${javac.target}">
+            <classpath path="${javac.classpath}"/>
+        </javac>
+    </target>
+
+    <target name="-pre-jar"/>
+    <target name="-post-jar"/>
+
+    <target name="jar" depends="-pre-jar, compile, -do-jar, -post-jar" description="Crea el archivo JAR ejecutable."/>
+
+    <target name="-do-jar">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.jar}" manifest="${manifest.file}">
+            <fileset dir="${build.classes.dir}"/>
+        </jar>
+    </target>
+
+    <target name="run" depends="compile" description="Ejecuta la clase principal.">
+        <property name="build.classes.dir" value="${build.dir}/classes"/>
+        <java classname="${main.class}" fork="true" failonerror="true">
+            <classpath path="${run.classpath}"/>
+            <jvmarg line="${run.jvmargs}"/>
+        </java>
+    </target>
+
+    <target name="clean" description="Elimina artefactos generados.">
+        <property file="nbproject/project.properties"/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <!-- Hooks adicionales usados habitualmente por NetBeans (vacíos a propósito) -->
+    <target name="-pre-init"/>
+    <target name="-post-init"/>
+    <target name="-do-clean"/>
+    <target name="-post-clean"/>
+</project>

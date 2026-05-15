@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Script principal Ant del proyecto Biblioteca_Reportes.
+    Compatible con Apache NetBeans (proyecto Java estándar sin Maven/Gradle).
+-->
+<project name="Biblioteca_Reportes" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Biblioteca_Reportes.</description>
+    <import file="nbproject/build-impl.xml"/>
+</project>

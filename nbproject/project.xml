@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Metadatos del proyecto Java SE (Ant) para Apache NetBeans.
+    El esquema j2se-project/3 no admite minimum-ant-version dentro de <data>;
+    ese valor (si se requiere) se controla con la versión de Ant que incorpora el IDE.
+-->
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.java.j2seproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+            <name>Biblioteca_Reportes</name>
+            <source-roots>
+                <root id="src.dir"/>
+            </source-roots>
+            <test-roots/>
+        </data>
+    </configuration>
+</project>

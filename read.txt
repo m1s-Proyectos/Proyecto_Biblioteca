@@ -1,0 +1,134 @@
+================================================================================
+  Biblioteca_Reportes — Guía rápida para desarrolladores
+================================================================================
+
+REPOSITORIO (GitHub)
+--------------------------------------------------------------------------------
+  URL:  https://github.com/m1s-Proyectos/Proyecto_Biblioteca
+
+  Clonar (ejemplo):
+    git clone https://github.com/m1s-Proyectos/Proyecto_Biblioteca.git
+    cd Proyecto_Biblioteca
+
+  Nota: Si la carpeta local se llama distinto a "Biblioteca_Reportes", el
+  proyecto sigue siendo el mismo; lo importante es abrir en NetBeans la carpeta
+  que contenga build.xml, nbproject/ y src/.
+
+================================================================================
+  QUÉ ES ESTE PROYECTO
+================================================================================
+  Aplicación de escritorio en Java Swing con JDBC y patrón DAO que muestra
+  reportes (tablas) leyendo datos desde vistas MySQL.
+
+  • Tipo de proyecto: Java estándar con Ant (NO Maven ni Gradle).
+  • IDE recomendado: Apache NetBeans (proyecto Java SE + Ant).
+  • JDK: 17 (configurado en nbproject/project.properties: javac.source/target).
+
+================================================================================
+  REQUISITOS PREVIOS
+================================================================================
+  1) JDK 17 (o compatible con la versión indicada en project.properties).
+  2) Apache NetBeans (versión reciente con soporte Java SE + Ant).
+  3) MySQL Server con una base de datos llamada "biblioteca" (o ajustar URL).
+  4) Las siguientes VISTAS deben existir en MySQL (esquema biblioteca):
+
+        - vista_prestamos_activos
+        - vista_multas_pendientes
+        - vista_libros_mas_prestados
+        - vista_reporte_ejemplares
+
+     Los DAO ejecutan "SELECT *" sobre cada vista. Los nombres de columnas
+     pueden ser snake_case o camelCase; el código intenta mapear variantes
+     comunes (revisar paquete dao si tu BD usa otros nombres).
+
+================================================================================
+  CONEXIÓN A LA BASE DE DATOS
+================================================================================
+  Archivo:  src/conexion/Conexion.java
+
+  Debes configurar ahí:
+    - URL (host, puerto, nombre de la base de datos)
+    - USER
+    - PASSWORD
+
+  Cada integrante suele tener usuario/clave distintos en su MySQL local:
+  ajusta estos valores en tu máquina sin subir contraseñas reales al repositorio
+  si el repo es público (considera variables de entorno o archivo local
+  ignorado por Git en mejoras futuras).
+
+================================================================================
+  CÓMO ABRIR Y EJECUTAR EN NETBEANS
+================================================================================
+  1) Archivo → Abrir proyecto… → seleccionar la carpeta del proyecto
+     (donde está build.xml).
+  2) Verificar en Propiedades del proyecto → Bibliotecas que existan:
+        librerias/mysql-connector-j.jar
+        librerias/jasperreports.jar
+     Si faltan, vuelve a descargarlas o restáuralas desde el repositorio.
+  3) Clic derecho en el proyecto → Ejecutar
+     Clase principal:  main.Main
+
+  El menú principal es vistas.FrmMenuPrincipal; desde ahí se abren los reportes.
+
+================================================================================
+  ESTRUCTURA PRINCIPAL (resumen)
+================================================================================
+  src/conexion/     Conexion JDBC
+  src/modelos/      Entidades (PrestamoActivo, MultaPendiente, etc.)
+  src/dao/          Acceso a datos (PreparedStatement, consultas a vistas)
+  src/vistas/       JFrame Swing (menú + formularios de reporte)
+  src/utilidades/   TableStyle, ExportarPDF (base para Jasper futuro)
+  src/main/         Main.java — punto de entrada
+
+  librerias/        JAR externos (MySQL Connector, JasperReports)
+  reportes/         Archivos .jasper (plantillas; reemplazar por los definitivos
+                    compilados desde JRXML si aplica)
+
+  nbproject/        Metadatos y build Ant para NetBeans
+  build.xml         Script Ant raíz
+
+================================================================================
+  COMPILACIÓN (sin NetBeans, opcional)
+================================================================================
+  Desde la raíz del proyecto, con javac y las JAR en librerias/, por ejemplo:
+
+    mkdir build\classes  (si no existe)
+    javac --release 17 -encoding UTF-8 -d build\classes ^
+      -cp "librerias\mysql-connector-j.jar;librerias\jasperreports.jar" ^
+      (todos los .java bajo src\)
+
+  En Windows el separador de classpath es ";". En Linux/macOS sería ":".
+
+================================================================================
+  NOTAS PARA QUIEN VA A MODIFICAR EL CÓDIGO
+================================================================================
+  • Mantener el patrón DAO: vistas/consultas en dao/, modelos en modelos/.
+  • Las tablas en Swing usan DefaultTableModel; estilos en TableStyle.
+  • NO convertir el proyecto a Maven/Gradle salvo acuerdo del equipo.
+  • Tras clonar: si NetBeans marca error en project.xml, usar la versión del
+    repo (no reintroducir etiquetas no válidas dentro de <data> de j2se-project).
+  • ExportarPDF está preparada para JasperReports; completar integración cuando
+    los .jasper y dependencias estén definidos.
+
+================================================================================
+  PROBLEMAS FRECUENTES
+================================================================================
+  • Error al cargar datos / SQLException:
+      - MySQL no está corriendo, credenciales incorrectas, o faltan las vistas.
+  • Classpath:
+      - Comprobar que las dos JAR estén en librerias/ y referenciadas en
+        nbproject/project.properties.
+  • Ventanas en blanco:
+      - Revisar que las vistas SQL devuelvan filas y que los nombres de
+        columnas coincidan con el mapeo en los DAO.
+
+================================================================================
+  CONTACTO / COORDINACIÓN
+================================================================================
+  Acordar con el equipo ramas (main/develop), convención de commits y si se
+  suben o no credenciales locales. Este read.txt es orientativo; amplíen lo
+  que necesiten en el mismo archivo o en documentación del equipo.
+
+================================================================================
+  Fin del documento
+================================================================================
