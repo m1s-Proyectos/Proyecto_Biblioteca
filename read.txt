@@ -2,17 +2,21 @@
   Biblioteca_Reportes — Guía rápida para poder ejecutar el proyecto
 ================================================================================
 
-REPOSITORIO (GitHub)
+REPOSITORIO (GitHub) Y RAMA DE TRABAJO (Felix)
 --------------------------------------------------------------------------------
   URL:  https://github.com/m1s-Proyectos/Proyecto_Biblioteca
 
-  Clonar (ejemplo):
-    git clone https://github.com/m1s-Proyectos/Proyecto_Biblioteca.git
+  Félix puedes clonar desde la rama llamada  Felix que es un idéntica a la rama main y subes tus cambios a esa rama.
+
+  Opción A — Clonar ya apuntando a la rama Felix (recomendado para Félix):
+    git clone -b Felix --single-branch https://github.com/m1s-Proyectos/Proyecto_Biblioteca.git
     cd Proyecto_Biblioteca
 
-  Nota: Si la carpeta local se llama distinto a "Biblioteca_Reportes", el
-  proyecto sigue siendo el mismo; lo importante es abrir en NetBeans la carpeta
-  que contenga build.xml, nbproject/ y src/.
+  Opción B — Clonar el repo y cambiar a la rama Felix:
+    git clone https://github.com/m1s-Proyectos/Proyecto_Biblioteca.git
+    cd Proyecto_Biblioteca
+    git fetch origin
+    git checkout Felix
 
 ================================================================================
   QUÉ ES ESTE PROYECTO
@@ -29,8 +33,10 @@ REPOSITORIO (GitHub)
 ================================================================================
   1) JDK 17 (o compatible con la versión indicada en project.properties).
   2) Apache NetBeans (versión reciente con soporte Java SE + Ant).
-  3) MySQL Server con una base de datos llamada "biblioteca" debes poner la que tu haz creado.
-  4) Las siguientes VISTAS deben existir en MySQL (esquema biblioteca):
+  3) MySQL Server. El nombre del esquema en el código suele ser "biblioteca";
+     debes usar el nombre de la base de datos que tú hayas creado y ajustar la
+     URL en Conexion.java si es distinto.
+  4) Las siguientes VISTAS deben existir en MySQL (en tu esquema, p. ej. biblioteca):
 
         - vista_prestamos_activos
         - vista_multas_pendientes
@@ -48,8 +54,8 @@ REPOSITORIO (GitHub)
 
   Debes configurar ahí:
     - URL (host, puerto, nombre de la base de datos)
-    - USER "tu user"
-    - PASSWORD"tu password en mysql"
+    - USER   → tu usuario de MySQL
+    - PASSWORD → tu contraseña de MySQL
 
 ================================================================================
   CÓMO ABRIR Y EJECUTAR EN NETBEANS
@@ -82,16 +88,16 @@ REPOSITORIO (GitHub)
   nbproject/        Metadatos y build Ant para NetBeans
   build.xml         Script Ant raíz
 
-
 ================================================================================
   NOTAS PARA CUANDO INTENTES MODIFICAR EL CÓDIGO
 ================================================================================
   • Mantener el patrón DAO: vistas/consultas en dao/, modelos en modelos/.
   • Las tablas en Swing usan DefaultTableModel; estilos en TableStyle.
-  • NO convertir el proyecto a Maven/Gradle salvo acuerdo de nosotros 2.
+  • NO convertir el proyecto a Maven/Gradle salvo acuerdo entre ustedes.
   • Tras clonar: si NetBeans marca error en project.xml, usar la versión del
     repo (no reintroducir etiquetas no válidas dentro de <data> de j2se-project).
- 
+  • Hacer commit y push en la rama  Felix  (o la rama con tu nombre que acuerden).
+
 ================================================================================
   PROBLEMAS FRECUENTES
 ================================================================================
@@ -105,6 +111,14 @@ REPOSITORIO (GitHub)
         columnas coincidan con el mapeo en los DAO.
 
 ================================================================================
-  CONTACTO / COORDINACIÓN
+  CONTACTO / COORDINACIÓN (Git)
 ================================================================================
-Te creare una rama con tu nombre que sera  donde iras guardando tus cambios que hagas del proyecto.
+  Se creó una rama con el nombre de  Felix
+  para que ahí guardes tus commits: cambios del proyecto, fixes y nuevas
+  funciones. Antes de mezclar con main, conviene revisar en equipo al final.
+
+ 
+
+================================================================================
+  Fin del documento
+================================================================================
