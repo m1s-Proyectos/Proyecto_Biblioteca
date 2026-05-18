@@ -62,10 +62,9 @@ REPOSITORIO (GitHub) Y RAMA DE TRABAJO (Felix)
 ================================================================================
   1) Archivo → Abrir proyecto… → seleccionar la carpeta del proyecto
      (donde está build.xml).
-  2) Verificar en Propiedades del proyecto → Bibliotecas que existan:
+  2) Verificar en Propiedades del proyecto → Bibliotecas que exista:
         librerias/mysql-connector-j.jar
-        librerias/jasperreports.jar
-     Si faltan, vuelve a descargarlas o restáuralas desde el repositorio.
+     Si falta, vuelve a descargarla o restáurala desde el repositorio.
   3) Clic derecho en el proyecto → Ejecutar
      Clase principal:  main.Main
 
@@ -78,12 +77,10 @@ REPOSITORIO (GitHub) Y RAMA DE TRABAJO (Felix)
   src/modelos/      Entidades (PrestamoActivo, MultaPendiente, etc.)
   src/dao/          Acceso a datos (PreparedStatement, consultas a vistas)
   src/vistas/       JFrame Swing (menú + formularios de reporte)
-  src/utilidades/   TableStyle, ExportarPDF (base para Jasper futuro)
+  src/utilidades/   TableStyle (estilo de tablas)
   src/main/         Main.java — punto de entrada
 
-  librerias/        JAR externos (MySQL Connector, JasperReports)
-  reportes/         Archivos .jasper (plantillas; reemplazar por los definitivos
-                    compilados desde JRXML si aplica)
+  librerias/        MySQL Connector/J (jdbc)
 
   nbproject/        Metadatos y build Ant para NetBeans
   build.xml         Script Ant raíz
@@ -104,7 +101,7 @@ REPOSITORIO (GitHub) Y RAMA DE TRABAJO (Felix)
   • Error al cargar datos / SQLException:
       - MySQL no está corriendo, credenciales incorrectas, o faltan las vistas.
   • Classpath:
-      - Comprobar que las dos JAR estén en librerias/ y referenciadas en
+      - Comprobar que mysql-connector-j.jar esté en librerias/ y referenciada en
         nbproject/project.properties.
   • Ventanas en blanco:
       - Revisar que las vistas SQL devuelvan filas y que los nombres de
